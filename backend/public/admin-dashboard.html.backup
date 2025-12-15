@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="header-bar">
+    <div class="brand">Admin Panel</div>
+    <div>
+      <a href="admin-dashboard.html" class="button-secondary">Dashboard</a>
+      <a href="owner-signup.html" class="button-secondary">New Owner</a>
+      <a href="admin-login.html" class="button-secondary">Logout</a>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <div class="logo">
+        <svg viewBox="0 0 24 24">
+          <path fill="currentColor" d="M12 2l7 4v6c0 5-7 10-7 10s-7-5-7-10V6l7-4z" />
+        </svg>
+        <span>Admin</span>
+      </div>
+      <nav>
+        <a class="nav-item" href="#" data-tab-link="overview"><svg viewBox="0 0 24 24">
+            <path fill="currentColor" d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
+          </svg><span>Dashboard</span></a>
+        <a class="nav-item" href="#" data-tab-link="owners"><svg viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 12a5 5 0 100-10 5 5 0 000 10zm-9 9a9 9 0 1118 0H3z" />
+          </svg><span>Owners</span></a>
+        <a class="nav-item" href="#" data-tab-link="analytics"><svg viewBox="0 0 24 24">
+            <path fill="currentColor" d="M3 3h2v18H3V3zm4 10h2v8H7v-8zm4-6h2v14h-2V7zm4 8h2v6h-2v-6zm4-12h2v18h-2V3z" />
+          </svg><span>Analytics</span></a>
+        <a class="nav-item" href="#" data-tab-link="apiLogs"><svg viewBox="0 0 24 24">
+            <path fill="currentColor" d="M4 4h16v2H4V4zm0 4h16v2H4V8zm0 4h16v2H4v-2zm0 4h16v2H4v-2z" />
+          </svg><span>API Logs</span></a>
+        <a class="nav-item" href="#" data-tab-link="ocrLogs"><svg viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 4l4 4h-3v8h-2V8H8l4-4zm-7 16h14v-2H5v2z" />
+          </svg><span>OCR Logs</span></a>
+        <a class="nav-item" href="admin-login.html"><svg viewBox="0 0 24 24">
+            <path fill="currentColor"
+              d="M16 13v-2H7V8l-5 4 5 4v-3h9zM20 3h-8v2h8v14h-8v2h8a2 2 0 002-2V5a2 2 0 00-2-2z" />
+          </svg><span>Logout</span></a>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <div class="topbar">
+        <div class="top-icon"><svg viewBox="0 0 24 24">
+            <path fill="currentColor"
+              d="M12 2a7 7 0 00-7 7v5l-2 2h18l-2-2V9a7 7 0 00-7-7zm0 20a3 3 0 003-3H9a3 3 0 003 3z" />
+          </svg></div>
+        <div class="top-icon"><svg viewBox="0 0 24 24">
+            <path fill="currentColor"
+              d="M12 22c1.1 0 2-.9 2-2H10c0 1.1.9 2 2 2zm6-6V9c0-3.07-1.63-5.64-4.5-6.32V2h-3v.68C7.63 3.36 6 5.92 6 9v7l-2 2v1h16v-1l-2-2z" />
+          </svg></div>
+        <div class="top-avatar">A</div>
+      </div>
+      <h2>Administration</h2>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M12 12a5 5 0 100-10 5 5 0 000 10zm-9 9a9 9 0 1118 0H3z" />
+            </svg></div>
+          <div>
+            <div class="stat-title">Owners</div>
+            <div id="statOwners" class="stat-value">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M12 6a3 3 0 110 6 3 3 0 010-6zm-7 14a7 7 0 0114 0H5z" />
+            </svg></div>
+          <div>
+            <div class="stat-title">Drivers</div>
+            <div id="statDrivers" class="stat-value">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M3 13l2-2h14l2 2v6H3v-6zm2-6l2-2h10l2 2v2H5V7z" />
+            </svg></div>
+          <div>
+            <div class="stat-title">Vehicles</div>
+            <div id="statVehicles" class="stat-value">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M5 3h14v4H5V3zm0 6h14v4H5V9zm0 6h14v4H5v-4z" />
+            </svg></div>
+          <div>
+            <div class="stat-title">Documents</div>
+            <div id="statDocuments" class="stat-value">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M11 19h2v-6h3l-4-4-4 4h3v6z" />
+            </svg></div>
+          <div>
+            <div class="stat-title">Today's Uploads</div>
+            <div id="statToday" class="stat-value">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-5l6-6-1.41-1.41L11 12.17l-2.59-2.58L7 11l4 4z" />
+            </svg></div>
+          <div>
+            <div class="stat-title">OCR Success</div>
+            <div id="statOcr" class="stat-value">0%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabs tabs-pills">
+        <button class="tab-button active" data-tab="overview">Overview</button>
+        <button class="tab-button" data-tab="owners">Owners</button>
+        <button class="tab-button" data-tab="analytics">Analytics</button>
+        <button class="tab-button" data-tab="apiLogs">API Logs</button>
+        <button class="tab-button" data-tab="ocrLogs">OCR Logs</button>
+      </div>
+
+      <div id="overview-tab" class="tab-content active">
+        <div class="system-card">
+          <div class="table-container">
+            <div class="list-controls">
+              <div class="search-input" style="max-width:280px">System Summary</div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Count</th>
+                  </tr>
+                </thead>
+                <tbody id="overviewTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="owners-tab" class="tab-content">
+        <div class="table-container">
+          <div class="list-controls">
+            <input id="searchOwnersInput" class="search-input" placeholder="Search owners by name or email" />
+            <div class="controls-right"><button id="refreshOwners" class="button-secondary">Refresh</button></div>
+          </div>
+          <div class="table-wrap">
+            <table id="ownersTable" class="data-table">
+              <thead>
+                <tr>
+                  <th>Owner Code</th>
+                  <th>Business Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Drivers</th>
+                  <th>Vehicles</th>
+                  <th>Documents</th>
+                  <th>Created At</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="analytics-tab" class="tab-content">
+        <div class="system-card">
+          <div class="list-controls">
+            <select id="analyticsOwnerSelect" class="search-input" style="max-width:320px">
+              <option value="">Select owner...</option>
+            </select>
+            <div class="controls-right"><button id="refreshAnalytics" class="button-secondary">Refresh</button></div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-title">Storage Used</div>
+              <div id="analyticsStorage" class="stat-value">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">OCR Success</div>
+              <div id="analyticsOcr" class="stat-value">0%</div>
+            </div>
+          </div>
+          <div class="table-container">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Count</th>
+                  </tr>
+                </thead>
+                <tbody id="analyticsByType"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="table-container">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Uploads</th>
+                  </tr>
+                </thead>
+                <tbody id="analyticsTimeline"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </main>
+  </div>
+  <script>
+    // Authentication check for admin dashboard
+    (function () {
+      const authCheck = document.createElement('div');
+      authCheck.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);color:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;font-size:18px;';
+      authCheck.textContent = 'Checking authentication…';
+      document.body.appendChild(authCheck);
+
+      fetch('/auth/me')
+        .then(async function (r) {
+          var d = {};
+          try { d = await r.json(); } catch (e) { }
+          if (r.ok && d && d.role === 'admin') {
+            // Authenticated as admin - remove loading overlay
+            document.body.removeChild(authCheck);
+            return;
+          }
+          if (r.ok && d && d.role === 'owner') {
+            // Authenticated but as owner - redirect to owner dashboard
+            window.location.href = 'owner-dashboard.html';
+            return;
+          }
+          // Not authenticated - redirect to login
+          window.location.href = 'login.html';
+        })
+        .catch(function () {
+          // Error checking auth - redirect to login
+          window.location.href = 'login.html';
+        });
+    })();
+  </script>
+  <script src="app.js"></script>
+  <script src="admin.js"></script>
+</body>
+
+</html>
+<div id="apiLogs-tab" class="tab-content">
+  <div class="table-container">
+    <div class="list-controls">
+      <input id="apiLogsOwnerInput" class="search-input" placeholder="Filter by owner ID" />
+      <div class="controls-right"><button id="refreshApiLogs" class="button-secondary">Refresh</button></div>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Endpoint</th>
+            <th>Owner</th>
+            <th>Status</th>
+            <th>Timestamp</th>
+            <th>Payload Size</th>
+          </tr>
+        </thead>
+        <tbody id="apiLogsBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="ocrLogs-tab" class="tab-content">
+  <div class="table-container">
+    <div class="list-controls">
+      <input id="ocrLogsOwnerInput" class="search-input" placeholder="Filter by owner ID" />
+      <div class="controls-right"><button id="refreshOcrLogs" class="button-secondary">Refresh</button></div>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>File Type</th>
+            <th>Owner</th>
+            <th>Success</th>
+            <th>Timestamp</th>
+            <th>Extracted Fields</th>
+          </tr>
+        </thead>
+        <tbody id="ocrLogsBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>

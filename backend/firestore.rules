@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check if user is the owner of the document
+    function isOwner(ownerId) {
+      return isAuthenticated() && request.auth.uid == ownerId;
+    }
+
+    // Cab Owners Collection
+    match /cabOwners/{ownerId} {
+      // Owner can read/write their own document
+      allow read, write: if isOwner(ownerId);
+      
+      // Drivers Subcollection
+      match /drivers/{driverId} {
+        allow read, write: if isOwner(ownerId);
+      }
+      
+      // Vehicles Subcollection
+      match /vehicles/{vehicleId} {
+        allow read, write: if isOwner(ownerId);
+      }
+    }
+    
+    // Deny access to all other collections by default (Global drivers/vehicles are deprecated)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

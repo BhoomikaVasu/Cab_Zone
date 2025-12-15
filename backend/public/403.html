@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>403 - Access Denied</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .error-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 5rem;
+        }
+
+        .error-code {
+            font-size: 6rem;
+            font-weight: 700;
+            color: #dc2626;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .error-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 1rem 0;
+        }
+
+        .error-message {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin: 2rem 0;
+            line-height: 1.6;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .icon-lock {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header-bar">
+        <div class="brand">DL & RC Extractor</div>
+    </header>
+
+    <div class="error-container">
+        <div class="icon-lock">🔒</div>
+        <h1 class="error-code">403</h1>
+        <h2 class="error-title">Access Denied</h2>
+        <p class="error-message">
+            You do not have permission to access this page.<br>
+            Please login with the correct account or contact your administrator.
+        </p>
+        <div class="error-actions">
+            <a href="/login.html" class="button-secondary">Go to Login</a>
+            <button onclick="history.back()" class="button-secondary">Go Back</button>
+        </div>
+    </div>
+</body>
+
+</html>
