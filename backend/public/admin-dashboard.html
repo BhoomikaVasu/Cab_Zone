@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- App Layout with Sidebar -->
+  <div class="app-layout">
+    <!-- Left Sidebar -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">Admin Panel</div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-item active" data-tab-link="overview">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M12 2l7 4v6c0 5-7 10-7 10s-7-5-7-10V6l7-4z" />
+          </svg>
+          <span>Overview</span>
+        </a>
+        <a href="#" class="sidebar-item" data-tab-link="owners">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M12 12a5 5 0 100-10 5 5 0 000 10zm-9 9a9 9 0 1118 0H3z" />
+          </svg>
+          <span>Owners</span>
+        </a>
+        <a href="#" class="sidebar-item" data-tab-link="analytics">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor"
+              d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2v-3h2v3zm4 0h-2v-5h2v5z" />
+          </svg>
+          <span>Analytics</span>
+        </a>
+        <button id="logoutBtn" class="sidebar-item">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor"
+              d="M16 13v-2H7V8l-5 4 5 4v-3h9zM20 3h-8v2h8v14h-8v2h8a2 2 0 002-2V5a2 2 0 00-2-2z" />
+          </svg>
+          <span>Logout</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="app-main">
+      <!-- Theme Toggle Button (Top Right) -->
+      <div class="theme-toggle-container">
+        <button id="themeToggle" class="theme-toggle-btn" title="Toggle Theme">
+          <svg id="themeIcon" viewBox="0 0 24 24" width="22" height="22">
+            <path fill="currentColor"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="container">
+        <h2>Admin Dashboard</h2>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-icon"><svg viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 12a5 5 0 100-10 5 5 0 000 10zm-9 9a9 9 0 1118 0H3z" />
+              </svg></div>
+            <div>
+              <div class="stat-title">Owners</div>
+              <div id="statOwners" class="stat-value">0</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><svg viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 6a3 3 0 110 6 3 3 0 010-6zm-7 14a7 7 0 0114 0H5z" />
+              </svg></div>
+            <div>
+              <div class="stat-title">Drivers</div>
+              <div id="statDrivers" class="stat-value">0</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><svg viewBox="0 0 24 24">
+                <path fill="currentColor" d="M3 13l2-2h14l2 2v6H3v-6zm2-6l2-2h10l2 2v2H5V7z" />
+              </svg></div>
+            <div>
+              <div class="stat-title">Vehicles</div>
+              <div id="statVehicles" class="stat-value">0</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><svg viewBox="0 0 24 24">
+                <path fill="currentColor" d="M5 3h14v4H5V3zm0 6h14v4H5V9zm0 6h14v4H5v-4z" />
+              </svg></div>
+            <div>
+              <div class="stat-title">Documents</div>
+              <div id="statDocuments" class="stat-value">0</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><svg viewBox="0 0 24 24">
+                <path fill="currentColor" d="M11 19h2v-6h3l-4-4-4 4h3v6z" />
+              </svg></div>
+            <div>
+              <div class="stat-title">Today's Uploads</div>
+              <div id="statToday" class="stat-value">0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs tabs-pills">
+          <button class="tab-button active" data-tab="overview">Overview</button>
+          <button class="tab-button" data-tab="owners">Owners</button>
+          <button class="tab-button" data-tab="analytics">Analytics</button>
+        </div>
+
+        <div id="overview-tab" class="tab-content active">
+          <div class="system-card">
+            <div class="table-container">
+              <div class="list-controls">
+                <div class="search-input" style="max-width:280px">System Summary</div>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Metric</th>
+                      <th>Count</th>
+                    </tr>
+                  </thead>
+                  <tbody id="overviewTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="owners-tab" class="tab-content">
+          <div class="table-container">
+            <div class="list-controls">
+              <input id="searchOwnersInput" class="search-input" placeholder="Search owners by name or email" />
+              <div class="controls-right"><button id="refreshOwners" class="button-secondary">Refresh</button></div>
+            </div>
+            <div class="table-wrap">
+              <table id="ownersTable" class="data-table">
+                <thead>
+                  <tr>
+                    <th>Owner Code</th>
+                    <th>Business Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Drivers</th>
+                    <th>Vehicles</th>
+                    <th>Documents</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div id="analytics-tab" class="tab-content">
+          <div class="system-card">
+            <div class="list-controls">
+              <select id="analyticsOwnerSelect" class="search-input" style="max-width:320px">
+                <option value="">Select owner...</option>
+              </select>
+              <div class="controls-right"><button id="refreshAnalytics" class="button-secondary">Refresh</button></div>
+            </div>
+            <div class="stat-grid">
+              <div class="stat-card">
+                <div class="stat-title">Storage Used</div>
+                <div id="analyticsStorage" class="stat-value">0</div>
+              </div>
+            </div>
+            <div class="table-container">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Type</th>
+                      <th>Count</th>
+                    </tr>
+                  </thead>
+                  <tbody id="analyticsByType"></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="table-container">
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Uploads</th>
+                    </tr>
+                  </thead>
+                  <tbody id="analyticsTimeline"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </main>
+  </div>
+  <script>
+    // Authentication check for admin dashboard
+    (function () {
+      const authCheck = document.createElement('div');
+      authCheck.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);color:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;font-size:18px;';
+      authCheck.textContent = 'Checking authentication…';
+      document.body.appendChild(authCheck);
+
+      console.log('[Admin Dashboard] Starting authentication check...');
+
+      fetch('/auth/me', { credentials: 'include' })
+        .then(async function (r) {
+          console.log('[Admin Dashboard] Auth response status:', r.status);
+
+          if (!r.ok) {
+            console.log('[Admin Dashboard] Not authenticated, redirecting to login');
+            window.location.replace('/login.html');
+            return;
+          }
+
+          var d = {};
+          try {
+            d = await r.json();
+            console.log('[Admin Dashboard] Auth data:', d);
+          } catch (e) {
+            console.error('[Admin Dashboard] Error parsing auth response:', e);
+            window.location.replace('/login.html');
+            return;
+          }
+
+          if (d && d.role === 'admin') {
+            // Authenticated as admin - remove loading overlay
+            console.log('[Admin Dashboard] Authenticated as admin, showing dashboard');
+            document.body.removeChild(authCheck);
+            return;
+          }
+
+          if (d && d.role === 'owner') {
+            // Authenticated but as owner - redirect to owner dashboard
+            console.log('[Admin Dashboard] User is owner, redirecting to owner dashboard');
+            window.location.replace('/owner-dashboard.html');
+            return;
+          }
+
+          // Not authenticated or no role - redirect to login
+          console.log('[Admin Dashboard] No valid role, redirecting to login');
+          window.location.replace('/login.html');
+        })
+        .catch(function (err) {
+          // Error checking auth - redirect to login
+          console.error('[Admin Dashboard] Error checking auth:', err);
+          window.location.replace('/login.html');
+        });
+    })();
+  </script>
+  <script src="admin.js"></script>
+  <script>
+    const btn = document.getElementById('logoutBtn');
+    if (btn) btn.addEventListener('click', async () => { try { await fetch('/auth/logout', { method: 'POST' }); window.location.href = 'admin-login.html'; } catch (e) { window.location.href = 'admin-login.html'; } });
+  </script>
+</body>
+
+</html>

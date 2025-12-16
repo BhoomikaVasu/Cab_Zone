@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Admin Login</title>
+
+  <!-- NETWORK OPTIMIZATIONS FOR INSTANT LOGIN -->
+  <!-- Preconnect to reduce first network latency by 100-150ms -->
+  <link rel="preconnect" href="http://localhost:5000">
+  <!-- Cache control for proper caching -->
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <!-- Prefetch dashboard for instant loading after login -->
+  <link rel="prefetch" href="/admin-dashboard.html">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="header-bar">
+    <div class="brand">Admin</div>
+    <div>
+      <a href="index.html" class="button-secondary">Home</a>
+    </div>
+  </header>
+  <div class="container">
+    <h2>Super Admin Login</h2>
+    <form id="adminLoginForm" class="form-card">
+      <div class="form-field"><label>Email</label><input id="adminEmail" type="email" placeholder="Email"></div>
+      <div class="form-field"><label>Password</label><input id="adminPassword" type="password" placeholder="Password">
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p id="adminMessage" class="hidden"></p>
+  </div>
+  <script>
+    // Check if already authenticated
+    (function () {
+      fetch('/auth/me')
+        .then(async function (r) {
+          if (r.ok) {
+            var d = await r.json();
+            if (d && d.role === 'admin') {
+              window.location.href = 'admin-dashboard.html';
+            }
+          }
+        })
+        .catch(function () {
+          // Not authenticated, continue to login page
+        });
+    })();
+  </script>
+  <!-- Firebase Client SDK removed - using server-side authentication only -->
+  <script src="auth.js"></script>
+</body>
+
+</html>
